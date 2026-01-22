@@ -8,7 +8,14 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: '--font-playfa
 export const metadata: Metadata = {
   title: "OpenEnter | Open Events, Enter Markets",
   description: "Web2 & Web3 이벤트 및 마케팅 에이전시. 오프라인 행사 운영부터 시장 진입 전략까지.",
-  // icons 부분은 삭제했습니다. (app/icon.tsx 파일이 자동으로 작동합니다)
+  openGraph: {
+    title: "OpenEnter | Open Events, Enter Markets",
+    description: "Web2 & Web3 이벤트 및 마케팅 에이전시. 오프라인 행사 운영부터 시장 진입 전략까지.",
+    url: "https://openenter-web.vercel.app", // 실제 도메인이 있다면 그걸로 변경
+    siteName: "OpenEnter",
+    locale: "ko_KR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
