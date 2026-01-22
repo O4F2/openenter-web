@@ -1,11 +1,27 @@
+"use client";
+
 import { Playfair_Display, Inter } from "next/font/google";
-import { ArrowRight, Twitter, Mail } from "lucide-react";
+import { ArrowRight, Instagram, Check, Copy } from "lucide-react";
+import { useState } from "react";
 
 // 폰트 설정: 고급스러운 세리프(Playfair) + 깔끔한 산세리프(Inter)
 const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "700"] });
 const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
 export default function Home() {
+
+  // 복사 상태 관리 (false: 기본, true: 복사완료)
+  const [isCopied, setIsCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("contact@openenter.xyz");
+    setIsCopied(true);
+
+    // 2초 뒤에 다시 원래대로 복구
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+  };
   return (
     <main className={`min-h-screen bg-[#050505] text-white selection:bg-[#C0A062] selection:text-black ${inter.className}`}>
 
@@ -157,28 +173,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. FOOTER */}
+      {/* 4. FOOTER (Updated functionality) */}
       <footer id="contact" className="py-24 px-4 text-center bg-[#050505] relative overflow-hidden z-10 border-t border-white/5">
         <div className="max-w-3xl mx-auto relative z-10">
           <h2 className={`${playfair.className} text-3xl md:text-5xl font-bold mb-10 leading-tight`}>
-            Ready to Enter the New Market?
+            Ready to Enter?
           </h2>
 
           <div className="flex flex-col gap-8 items-center">
-            <a href="mailto:contact@openenter.xyz" className="text-xl md:text-3xl text-[#C0A062] hover:text-white transition-colors font-light border-b border-[#C0A062]/30 pb-1 hover:border-[#C0A062]">
-              contact@openenter.xyz
-            </a>
+
+            {/* 복사 버튼 영역 */}
+            <div className="relative">
+              <button
+                onClick={handleCopyEmail}
+                className="group flex items-center gap-3 text-lg md:text-xl text-[#C0A062] hover:text-white transition-colors font-light tracking-wider border-b border-[#C0A062]/30 pb-1 hover:border-[#C0A062]"
+              >
+                contact@openenter.xyz
+                {/* 복사 아이콘 (평소엔 Copy, 복사되면 Check) */}
+                {isCopied ? <Check size={18} className="text-[#00ff00]" /> : <Copy size={18} className="opacity-50 group-hover:opacity-100" />}
+              </button>
+
+              {/* 복사 완료 메시지 (애니메이션) */}
+              <div className={`absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-[#00ff00] transition-opacity duration-300 ${isCopied ? 'opacity-100' : 'opacity-0'}`}>
+                Copied to clipboard!
+              </div>
+            </div>
 
             <div className="flex gap-6 mt-4">
-              <a href="#" className="p-3 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors">
-                <Twitter size={20} />
+              {/* X (Twitter) */}
+              <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
               </a>
-              <a href="mailto:contact@openenter.xyz" className="p-3 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors">
-                <Mail size={20} />
+
+              {/* Instagram */}
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-3 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors">
+                <Instagram size={20} />
               </a>
             </div>
 
-            <p className="text-gray-600 text-xs font-light mt-12 uppercase tracking-widest">
+            <p className="text-gray-600 text-xs font-light mt-16 uppercase tracking-widest">
               © 2026 OpenEnter. All rights reserved.
             </p>
           </div>
