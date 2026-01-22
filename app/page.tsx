@@ -1,133 +1,189 @@
-import { Oswald, Inter } from "next/font/google";
-import { CornerDownLeft, ArrowRight, Instagram, Twitter, Mail } from "lucide-react";
-import Link from "next/link"; // Although user didn't explicitly ask for Link, it's good practice. But button is scrollTo.
+import { Playfair_Display, Inter } from "next/font/google";
+import { ArrowRight, Twitter, Mail } from "lucide-react";
 
-const oswald = Oswald({ subsets: ["latin"], weight: ["400", "700"] });
-const inter = Inter({ subsets: ["latin"], weight: ["400", "600"] });
+// 폰트 설정: 고급스러운 세리프(Playfair) + 깔끔한 산세리프(Inter)
+const playfair = Playfair_Display({ subsets: ["latin"], weight: ["400", "700"] });
+const inter = Inter({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
 export default function Home() {
   return (
-    <main className={`min-h-screen bg-black text-white selection:bg-[#00ff00] selection:text-black ${inter.className}`}>
-      
-      {/* 1. Hero Section */}
-      <section className="h-screen flex flex-col items-center justify-center p-4 relative border-b border-white/20">
-        <div className="text-center z-10">
-          <h1 className={`${oswald.className} text-[12vw] leading-none font-bold tracking-tighter mix-blend-difference`}>
-            OPENENTER
-            <span className="inline-block ml-2 align-middle text-[#00ff00]">
-              <CornerDownLeft size="0.7em" strokeWidth={4} />
-            </span>
-          </h1>
-          
-          <p className={`${oswald.className} text-xl md:text-3xl mt-4 uppercase tracking-[0.2em] text-gray-400`}>
-            Open Events, Enter Markets.
-          </p>
-          
-          <p className="max-w-md mx-auto mt-8 text-gray-500 text-sm md:text-base">
-            We help you <span className="text-white font-bold">'open'</span> events and <span className="text-white font-bold">'enter'</span> new markets. 
-            The bridge between Web2 & Web3 culture.
-          </p>
+    <main className={`min-h-screen bg-[#050505] text-white selection:bg-[#C0A062] selection:text-black ${inter.className}`}>
 
-          <a href="#footer" className="group mt-12 inline-flex items-center gap-2 px-8 py-4 border border-white hover:bg-[#00ff00] hover:text-black hover:border-[#00ff00] transition-all duration-300 font-bold uppercase tracking-widest">
-            Contact Us
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </a>
+      {/* Navigation (Simple) */}
+      <nav className="absolute top-0 left-0 w-full p-6 md:p-8 flex justify-between items-center z-20 mix-blend-difference">
+        <div className={`${playfair.className} text-2xl font-bold tracking-tight text-white`}>
+          OpenEnter
         </div>
-
-        {/* Decorative Grid Background (Optional, kept minimal) */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] -z-0 pointer-events-none"></div>
-      </section>
-
-      {/* 2. Service Section */}
-      <section className="py-24 px-4 md:px-12 border-b border-white/20">
-        <div className="max-w-7xl mx-auto">
-          <h2 className={`${oswald.className} text-5xl md:text-7xl font-bold mb-16 uppercase tracking-tight`}>
-            What We Do
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-l border-white/20">
-            {/* Card 1 */}
-            <div className="group border-r border-b border-white/20 p-8 md:p-12 min-h-[400px] flex flex-col justify-between hover:bg-[#111] transition-colors">
-              <span className="text-[#00ff00] font-mono text-sm">01</span>
-              <div>
-                <h3 className={`${oswald.className} text-4xl mb-4`}>Open Events</h3>
-                <p className="text-gray-400">Offline & Online Event Management. We create immersive experiences that bridge the gap between digital and physical.</p>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="group border-r border-b border-white/20 p-8 md:p-12 min-h-[400px] flex flex-col justify-between hover:bg-[#111] transition-colors">
-              <span className="text-[#00ff00] font-mono text-sm">02</span>
-              <div>
-                <h3 className={`${oswald.className} text-4xl mb-4`}>Connect People</h3>
-                <p className="text-gray-400">Influencer & Cosplayer Network. Building community through shared passions and authentic connections.</p>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="group border-r border-b border-white/20 p-8 md:p-12 min-h-[400px] flex flex-col justify-between hover:bg-[#111] transition-colors">
-              <span className="text-[#00ff00] font-mono text-sm">03</span>
-              <div>
-                <h3 className={`${oswald.className} text-4xl mb-4`}>Enter Markets</h3>
-                <p className="text-gray-400">Web3 Go-to-Market Strategy. Navigating the complex landscape of decentralized markets with precision.</p>
-              </div>
-            </div>
-          </div>
+        <div className="hidden md:flex gap-8 text-sm font-medium text-gray-300">
+          <a href="#services" className="hover:text-[#C0A062] transition-colors">Services</a>
+          <a href="#team" className="hover:text-[#C0A062] transition-colors">Team</a>
         </div>
-      </section>
-
-      {/* 3. Team Section */}
-      <section className="py-24 px-4 md:px-12 border-b border-white/20">
-        <div className="max-w-7xl mx-auto">
-          <h2 className={`${oswald.className} text-5xl md:text-7xl font-bold mb-16 uppercase tracking-tight text-right`}>
-            Who We Are
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-            {/* Profile 1 */}
-            <div className="border border-white/20 p-8 relative hover:border-[#00ff00] transition-colors group">
-              <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity text-[#00ff00]">
-                 <span className={`${oswald.className} uppercase`}>Founder</span>
-              </div>
-              <h3 className={`${oswald.className} text-3xl mb-2`}>Founder</h3>
-              <p className="text-gray-500 font-mono text-sm mb-4">Ex-BNDRS, Crypto Researcher</p>
-              <div className="w-full h-[1px] bg-white/20 my-6"></div>
-              <p className="text-gray-400 leading-relaxed">
-                Visionary leader with deep roots in the crypto ecosystem. Focused on opening new pathways for Web3 adoption.
-              </p>
-            </div>
-
-            {/* Profile 2 */}
-            <div className="border border-white/20 p-8 relative hover:border-[#00ff00] transition-colors group">
-              <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity text-[#00ff00]">
-                 <span className={`${oswald.className} uppercase`}>Co-Founder</span>
-              </div>
-              <h3 className={`${oswald.className} text-3xl mb-2`}>Joseph</h3>
-              <p className="text-gray-500 font-mono text-sm mb-4">Co-founder, Ops Specialist</p>
-              <div className="w-full h-[1px] bg-white/20 my-6"></div>
-              <p className="text-gray-400 leading-relaxed">
-                Operational mastermind ensuring seamless execution. Expert in bridging strategy with day-to-day reality.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. Footer */}
-      <footer id="footer" className="py-24 px-4 text-center bg-[#050505]">
-        <h2 className={`${oswald.className} text-6xl md:text-9xl font-bold tracking-tighter mb-8 hover:text-[#00ff00] transition-colors cursor-default`}>
-          READY TO ENTER?
-        </h2>
-        
-        <a href="mailto:contact@openenter.xyz" className="text-xl md:text-2xl hover:underline decoration-[#00ff00] decoration-2 underline-offset-8">
-          contact@openenter.xyz
+        <a href="#contact" className="hidden md:flex items-center gap-2 text-sm font-medium px-6 py-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors backdrop-blur-sm border border-white/5">
+          Contact Us
         </a>
-        
-        <div className="mt-24 text-gray-600 font-mono text-sm">
-          <p>© 2026 OPENENTER. All rights reserved.</p>
+      </nav>
+
+      {/* 1. HERO SECTION: 고급스러운 분위기 */}
+      <section className="h-screen flex flex-col items-center justify-center relative overflow-hidden px-4">
+        {/* 배경 조명 효과 */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-[#C0A062] rounded-full blur-[180px] opacity-10 pointer-events-none"></div>
+
+        <div className="text-center z-10 max-w-5xl mx-auto">
+          <h1 className={`${playfair.className} text-5xl md:text-8xl font-bold tracking-tight leading-tight mb-8 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/60`}>
+            Open Events,<br />Enter New Markets.
+          </h1>
+
+          <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+            We bridge the gap between Web2 & Web3. <br className="hidden md:block" />
+            The premier agency for event operations and market entry strategy.
+          </p>
+
+          <div className="flex flex-col md:flex-row gap-4 justify-center">
+            <a href="#contact" className="flex items-center justify-center gap-2 px-10 py-4 bg-[#C0A062] text-black rounded-full font-medium hover:bg-[#d4b475] transition-colors">
+              Start Project
+              <ArrowRight size={18} />
+            </a>
+            <a href="#services" className="flex items-center justify-center gap-2 px-10 py-4 bg-white/5 text-white rounded-full font-medium hover:bg-white/10 transition-colors backdrop-blur-sm border border-white/10">
+              Our Services
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. SERVICES SECTION */}
+      <section id="services" className="py-32 px-4 md:px-12 relative z-10 bg-[#050505]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-24">
+            <h2 className={`${playfair.className} text-4xl md:text-5xl font-bold mb-6`}>
+              What We Do
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto text-lg font-light">
+              From on-the-ground event management to high-level strategy.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Service 01 */}
+            <div className="p-10 rounded-2xl bg-[#0a0a0a] border border-white/5 hover:border-[#C0A062]/50 transition-colors duration-300 group">
+              <div className="text-[#C0A062] text-sm font-medium mb-4 uppercase tracking-wider">01. Open</div>
+              <h3 className={`${playfair.className} text-2xl font-bold mb-4 text-white group-hover:text-[#C0A062] transition-colors`}>Event Ops</h3>
+              <p className="text-gray-500 leading-relaxed font-light">
+                Comprehensive management for offline & online events. We handle the chaos so you can focus on the vision.
+              </p>
+            </div>
+
+            {/* Service 02 */}
+            <div className="p-10 rounded-2xl bg-[#0a0a0a] border border-white/5 hover:border-[#C0A062]/50 transition-colors duration-300 group">
+              <div className="text-[#C0A062] text-sm font-medium mb-4 uppercase tracking-wider">02. Connect</div>
+              <h3 className={`${playfair.className} text-2xl font-bold mb-4 text-white group-hover:text-[#C0A062] transition-colors`}>Influencers</h3>
+              <p className="text-gray-500 leading-relaxed font-light">
+                Access to a vetted network of Web3 influencers and professional cosplayers to amplify your brand presence.
+              </p>
+            </div>
+
+            {/* Service 03 */}
+            <div className="p-10 rounded-2xl bg-[#0a0a0a] border border-white/5 hover:border-[#C0A062]/50 transition-colors duration-300 group">
+              <div className="text-[#C0A062] text-sm font-medium mb-4 uppercase tracking-wider">03. Enter</div>
+              <h3 className={`${playfair.className} text-2xl font-bold mb-4 text-white group-hover:text-[#C0A062] transition-colors`}>Go-To-Market</h3>
+              <p className="text-gray-500 leading-relaxed font-light">
+                Strategic consulting for Web2 companies entering the Web3 space. We build the bridge to your new audience.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. TEAM SECTION (업데이트됨) */}
+      <section id="team" className="py-32 px-4 md:px-12 relative z-10 bg-black">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-20">
+            <h2 className={`${playfair.className} text-4xl md:text-5xl font-bold mb-6`}>
+              Team
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+
+
+            {/* Profile 1: Joseph */}
+            <div className="p-10 rounded-3xl bg-[#0a0a0a] border border-white/5 hover:bg-white/5 transition-all duration-300 flex flex-col items-start">
+              <div className="mb-6">
+                <h3 className={`${playfair.className} text-3xl font-bold mb-2`}>Joseph</h3>
+                <p className="text-[#C0A062] text-xs font-bold uppercase tracking-widest">Founder & Strategy</p>
+              </div>
+
+              <div className="w-full h-[1px] bg-white/10 mb-6"></div>
+
+              <ul className="space-y-4 text-gray-400 font-light text-sm md:text-base">
+                <li className="flex items-start gap-3">
+                  <span className="text-[#C0A062] mt-1">✦</span>
+                  <span>Ex-Finance at Global Top-tier Tech Giant</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-[#C0A062] mt-1">✦</span>
+                  <span>F&B Franchise Founder & CEO</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-[#C0A062] mt-1">✦</span>
+                  <span>Influential Web3 Community Operator</span>
+                </li>
+              </ul>
+            </div>
+            {/* Profile 2: Jack */}
+            <div className="p-10 rounded-3xl bg-[#0a0a0a] border border-white/5 hover:bg-white/5 transition-all duration-300 flex flex-col items-start">
+              <div className="mb-6">
+                <h3 className={`${playfair.className} text-3xl font-bold mb-2`}>Jack</h3>
+                <p className="text-[#C0A062] text-xs font-bold uppercase tracking-widest">Co-Founder & Ops</p>
+              </div>
+
+              <div className="w-full h-[1px] bg-white/10 mb-6"></div>
+
+              <ul className="space-y-4 text-gray-400 font-light text-sm md:text-base">
+                <li className="flex items-start gap-3">
+                  <span className="text-[#C0A062] mt-1">✦</span>
+                  <span>VC-backed Serial Entrepreneur</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-[#C0A062] mt-1">✦</span>
+                  <span>Global Startup Operations Experience</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-[#C0A062] mt-1">✦</span>
+                  <span>Web3 Strategist & Enthusiast</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. FOOTER */}
+      <footer id="contact" className="py-24 px-4 text-center bg-[#050505] relative overflow-hidden z-10 border-t border-white/5">
+        <div className="max-w-3xl mx-auto relative z-10">
+          <h2 className={`${playfair.className} text-3xl md:text-5xl font-bold mb-10 leading-tight`}>
+            Ready to Enter the New Market?
+          </h2>
+
+          <div className="flex flex-col gap-8 items-center">
+            <a href="mailto:contact@openenter.xyz" className="text-xl md:text-3xl text-[#C0A062] hover:text-white transition-colors font-light border-b border-[#C0A062]/30 pb-1 hover:border-[#C0A062]">
+              contact@openenter.xyz
+            </a>
+
+            <div className="flex gap-6 mt-4">
+              <a href="#" className="p-3 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors">
+                <Twitter size={20} />
+              </a>
+              <a href="mailto:contact@openenter.xyz" className="p-3 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-colors">
+                <Mail size={20} />
+              </a>
+            </div>
+
+            <p className="text-gray-600 text-xs font-light mt-12 uppercase tracking-widest">
+              © 2026 OpenEnter. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
-
     </main>
   );
 }
