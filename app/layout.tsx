@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "OpenEnter | Open Events, Enter Markets",
     description: "Web2 & Web3 이벤트 및 마케팅 에이전시. 오프라인 행사 운영부터 시장 진입 전략까지.",
-    url: "https://openenter-web.vercel.app", // 실제 도메인이 있다면 그걸로 변경
+    url: "https://openenter.co", // 실제 도메인이 있다면 그걸로 변경
     siteName: "OpenEnter",
     locale: "ko_KR",
     type: "website",
