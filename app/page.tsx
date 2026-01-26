@@ -23,8 +23,8 @@ export default function Home() {
         <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[80vw] h-[50vh] bg-purple-900/10 rounded-full blur-[150px]"></div>
       </div>
 
-      {/* Navbar */}
-      <nav className="fixed top-0 left-0 w-full px-8 py-6 flex justify-between items-center z-50 mix-blend-difference">
+      {/* Navbar: 수정됨 (Blur 효과 추가) */}
+      <nav className="fixed top-0 left-0 w-full px-8 py-6 flex justify-between items-center z-50 bg-[#020202]/80 backdrop-blur-md border-b border-white/5 transition-all">
         <div className="text-xl font-extrabold tracking-tighter text-white">
           OPENENTER<span className="text-purple-500">.</span>
         </div>
@@ -163,8 +163,8 @@ export default function Home() {
             onClick={handleCopyEmail}
             className="group relative block w-full"
           >
-            {/* 수정됨: 모바일에서는 화면 너비 비례(7vw), 데스크탑에서는 고정 크기(text-7xl) + 자동 줄바꿈 방지 */}
-            <span className="block text-[7vw] md:text-7xl font-extrabold tracking-tighter text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-500 transition-all duration-300 break-all md:break-normal">
+            {/* 수정됨: clamp 함수를 사용하여 최소 30px ~ 최대 50px(3rem)까지만 커지도록 제한 */}
+            <span className="block text-[clamp(30px,5vw,3rem)] font-extrabold tracking-tighter text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-500 transition-all duration-300 break-all md:break-normal">
               contact@openenter.co
             </span>
 
