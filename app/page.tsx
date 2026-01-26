@@ -10,7 +10,6 @@ export default function Home() {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyEmail = () => {
-    // [.co로 변경됨]
     navigator.clipboard.writeText("contact@openenter.co");
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
@@ -121,7 +120,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Joseph */}
-            <div className="p-8 rounded-2xl bg-gradient-to-br from-[#0A0A0A] to-[#050505] border border-white/5 hover:border-purple-500/20 transition-all flex flex-col justify-between h-full">
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-[#151515] to-[#0A0A0A] border border-white/10 hover:border-purple-500/20 transition-all flex flex-col justify-between h-full">
               <div>
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="text-2xl font-bold text-white">Joseph</h3>
@@ -136,7 +135,7 @@ export default function Home() {
             </div>
 
             {/* Jack */}
-            <div className="p-8 rounded-2xl bg-gradient-to-br from-[#0A0A0A] to-[#050505] border border-white/5 hover:border-blue-500/20 transition-all flex flex-col justify-between h-full">
+            <div className="p-8 rounded-2xl bg-gradient-to-br from-[#151515] to-[#0A0A0A] border border-white/10 hover:border-blue-500/20 transition-all flex flex-col justify-between h-full">
               <div>
                 <div className="flex justify-between items-start mb-6">
                   <h3 className="text-2xl font-bold text-white">Jack</h3>
@@ -164,8 +163,8 @@ export default function Home() {
             onClick={handleCopyEmail}
             className="group relative block w-full"
           >
-            {/* [.co로 변경됨] */}
-            <span className="block text-4xl md:text-7xl font-extrabold tracking-tighter text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-500 transition-all duration-300">
+            {/* 수정됨: 모바일에서는 화면 너비 비례(7vw), 데스크탑에서는 고정 크기(text-7xl) + 자동 줄바꿈 방지 */}
+            <span className="block text-[7vw] md:text-7xl font-extrabold tracking-tighter text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-blue-500 transition-all duration-300 break-all md:break-normal">
               contact@openenter.co
             </span>
 
@@ -178,7 +177,6 @@ export default function Home() {
           </button>
 
           <div className="mt-24 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 font-mono uppercase">
-            {/* [.co로 변경됨] */}
             <span>© 2026 OpenEnter.co</span>
             <div className="flex gap-8 mt-4 md:mt-0">
               <a href="https://x.com" target="_blank" className="hover:text-white transition-colors">X (Twitter)</a>
